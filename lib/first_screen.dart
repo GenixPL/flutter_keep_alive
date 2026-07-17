@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 
-class FirstScreen extends StatelessWidget {
+class FirstScreen extends StatefulWidget {
   const FirstScreen({super.key});
+
+  @override
+  State<FirstScreen> createState() => _FirstScreenState();
+}
+
+class _FirstScreenState extends State<FirstScreen> {
+  bool _keepAlive = true;
 
   @override
   Widget build(BuildContext context) {
@@ -10,12 +17,24 @@ class FirstScreen extends StatelessWidget {
         title: const Text('First Screen'),
         backgroundColor: Colors.blue.shade100,
         actions: [
+          Switch(
+            value: _keepAlive,
+            onChanged: (value) {
+              setState(() {
+                _keepAlive = value;
+              });
+            },
+          ),
         ],
       ),
       body: Center(
         child: ListView.builder(
           itemBuilder: (BuildContext context, int index) {
-            return _Element(index: index);
+            return _Element(
+              key: ValueKey(index),
+              index: index,
+              keepAlive: _keepAlive,
+            );
           },
         ),
       ),
@@ -27,9 +46,11 @@ class _Element extends StatefulWidget {
   const _Element({
     super.key,
     required this.index,
+    required this.keepAlive,
   });
 
   final int index;
+  final bool keepAlive;
 
   @override
   State<_Element> createState() => _ElementState();
@@ -39,7 +60,15 @@ class _ElementState extends State<_Element> with AutomaticKeepAliveClientMixin {
   int _counter = 0;
 
   @override
-  bool get wantKeepAlive => throw UnimplementedError();
+  bool get wantKeepAlive => widget.keepAlive;
+
+  @override
+  void didUpdateWidget(covariant _Element oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.keepAlive != widget.keepAlive) {
+      updateKeepAlive();
+    }
+  }
 
   @override
   void initState() {
@@ -55,6 +84,8 @@ class _ElementState extends State<_Element> with AutomaticKeepAliveClientMixin {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
