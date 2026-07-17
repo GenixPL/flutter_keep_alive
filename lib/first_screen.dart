@@ -9,6 +9,8 @@ class FirstScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('First Screen'),
         backgroundColor: Colors.blue.shade100,
+        actions: [
+        ],
       ),
       body: Center(
         child: ListView.builder(
@@ -33,8 +35,11 @@ class _Element extends StatefulWidget {
   State<_Element> createState() => _ElementState();
 }
 
-class _ElementState extends State<_Element> {
+class _ElementState extends State<_Element> with AutomaticKeepAliveClientMixin {
   int _counter = 0;
+
+  @override
+  bool get wantKeepAlive => throw UnimplementedError();
 
   @override
   void initState() {
