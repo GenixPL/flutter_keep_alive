@@ -29,18 +29,87 @@ class _ThirdScreenState extends State<ThirdScreen> {
         ],
       ),
       body: Center(
-        child: ListView.separated(
+        child: ListView.builder(
           itemCount: 100,
-          separatorBuilder: (BuildContext context, int index) => const Divider(),
+          // STEP
+          addAutomaticKeepAlives: false,
+          addRepaintBoundaries: false,
+          addSemanticIndexes: false,
+          //
           itemBuilder: (BuildContext context, int index) {
-            return CounterElement(
-              key: ValueKey(index),
-              index: index,
+            // STEP
+            return KeepAlive(
               keepAlive: _keepAlive,
+              child: _CounterElement(
+                key: ValueKey(index),
+                index: index,
+              ),
             );
           },
         ),
       ),
     );
+  }
+}
+
+class _CounterElement extends StatefulWidget {
+  const _CounterElement({
+    super.key,
+    required this.index,
+  });
+
+  final int index;
+
+  @override
+  State<_CounterElement> createState() => _CounterElementState();
+}
+
+class _CounterElementState extends State<_CounterElement> {
+  int _counter = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    print('init ${widget.index}');
+  }
+
+  @override
+  void dispose() {
+    print('dispose ${widget.index}');
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Divider(),
+        Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 8,
+            vertical: 16,
+          ),
+          child: Row(
+            children: [
+              Text(
+                '${widget.index}: $_counter',
+              ),
+              const Spacer(),
+              IconButton(
+                onPressed: _incrementCounter,
+                icon: const Icon(Icons.plus_one),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
   }
 }

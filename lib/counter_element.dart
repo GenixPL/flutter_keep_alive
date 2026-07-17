@@ -17,9 +17,11 @@ class CounterElement extends StatefulWidget {
 class _CounterElementState extends State<CounterElement> with AutomaticKeepAliveClientMixin {
   int _counter = 0;
 
+  // STEP
   @override
   bool get wantKeepAlive => widget.keepAlive && _counter > 0;
 
+  // STEP
   @override
   void didUpdateWidget(covariant CounterElement oldWidget) {
     super.didUpdateWidget(oldWidget);
@@ -42,6 +44,7 @@ class _CounterElementState extends State<CounterElement> with AutomaticKeepAlive
 
   @override
   Widget build(BuildContext context) {
+    // STEP
     super.build(context);
 
     return Column(
