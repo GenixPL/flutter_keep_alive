@@ -18,7 +18,7 @@ class _CounterElementState extends State<CounterElement> with AutomaticKeepAlive
   int _counter = 0;
 
   @override
-  bool get wantKeepAlive => widget.keepAlive;
+  bool get wantKeepAlive => widget.keepAlive && _counter > 0;
 
   @override
   void didUpdateWidget(covariant CounterElement oldWidget) {
@@ -38,6 +38,13 @@ class _CounterElementState extends State<CounterElement> with AutomaticKeepAlive
   void dispose() {
     print('dispose ${widget.index}');
     super.dispose();
+  }
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+    updateKeepAlive();
   }
 
   @override
@@ -60,10 +67,7 @@ class _CounterElementState extends State<CounterElement> with AutomaticKeepAlive
               ),
               const Spacer(),
               IconButton(
-                onPressed: () {
-                  _counter++;
-                  setState(() {});
-                },
+                onPressed: _incrementCounter,
                 icon: const Icon(Icons.plus_one),
               ),
             ],
