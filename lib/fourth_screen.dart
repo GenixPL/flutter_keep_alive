@@ -80,6 +80,7 @@ class _CounterElementState extends State<_CounterElement> {
 
   @override
   Widget build(BuildContext context) {
+    // STEP KeepAlive have to be directly below the list
     return KeepAlive(
       keepAlive: widget.keepAlive && _counter > 0,
       child: Column(
