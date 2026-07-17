@@ -14,8 +14,7 @@ class CounterElement extends StatefulWidget {
   State<CounterElement> createState() => _CounterElementState();
 }
 
-class _CounterElementState extends State<CounterElement>
-    with AutomaticKeepAliveClientMixin {
+class _CounterElementState extends State<CounterElement> with AutomaticKeepAliveClientMixin {
   int _counter = 0;
 
   @override
