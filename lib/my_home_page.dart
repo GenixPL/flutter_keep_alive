@@ -50,6 +50,13 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: const Text('Go to Second Screen'),
             ),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/third');
+              },
+              child: const Text('Go to Third Screen'),
+            ),
           ],
         ),
       ),
