@@ -1,3 +1,3 @@
-`KeepAlive` - the parent decides
+`KeepAlive`
 
-`AutomaticKeepAlive` & `AutomaticKeepAliveClientMixin` - the child decides
+`AutomaticKeepAlive` & `AutomaticKeepAliveClientMixin`

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'fourth_screen.dart';
 import 'my_home_page.dart';
 import 'first_screen.dart';
 import 'second_screen.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         '/first': (context) => const FirstScreen(),
         '/second': (context) => const SecondScreen(),
         '/third': (context) => const ThirdScreen(),
+        '/fourth': (context) => const FourthScreen(),
       },
     );
   }

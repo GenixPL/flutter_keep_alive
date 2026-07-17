@@ -51,6 +51,13 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: const Text('Go to Third Screen'),
             ),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/fourth');
+              },
+              child: const Text('Go to Fourth Screen'),
+            ),
           ],
         ),
       ),
