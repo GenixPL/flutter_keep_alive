@@ -40,13 +40,6 @@ class _CounterElementState extends State<CounterElement> with AutomaticKeepAlive
     super.dispose();
   }
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-    updateKeepAlive();
-  }
-
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -75,5 +68,12 @@ class _CounterElementState extends State<CounterElement> with AutomaticKeepAlive
         ),
       ],
     );
+  }
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+    updateKeepAlive();
   }
 }
