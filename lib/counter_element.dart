@@ -74,9 +74,8 @@ class _CounterElementState extends State<CounterElement> with AutomaticKeepAlive
   }
 
   void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+    _counter++;
+    setState(() {});
     updateKeepAlive();
   }
 }
